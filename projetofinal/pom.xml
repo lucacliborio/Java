@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>4.0.3</version>
+		<version>4.0.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.luca</groupId>
-	<artifactId>Aula5</artifactId>
+	<artifactId>projetofinal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Aula5</name>
-	<description>Exemplo da aula 5</description>
+	<name/>
+	<description/>
 	<url/>
 	<licenses>
 		<license/>
