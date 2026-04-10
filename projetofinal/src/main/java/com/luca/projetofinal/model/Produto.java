@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Produto {
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long id;
@@ -24,12 +25,7 @@ public class Produto {
 		
 	}
 	
-	public Produto(String nome, String preco) {
-	
-		this.nome = nome;
-		this.preco = preco;
-		
-	}
+	// getters e setters
 	
 	public void setId(Long id) {
 		this.id = id;
