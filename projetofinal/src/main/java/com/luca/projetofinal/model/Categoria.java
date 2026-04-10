@@ -3,6 +3,8 @@ package com.luca.projetofinal.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +22,7 @@ public class Categoria {
 	  private String descricao;
 	  
 	  @OneToMany(mappedBy = "categoria")
+	  @JsonIgnore
 	  private List<Produto> produtos;
 	  
 	  public Categoria() {}
@@ -66,5 +69,8 @@ public class Categoria {
 		  this.produtos = produtos;
 	  }
 
-	    
+	    /*{
+		"nome": "teste 2",
+		"descricao": "teste2"
+	}*/
 }

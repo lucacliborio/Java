@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luca.projetofinal.model.Produto;
-import com.luca.projetofinal.repository.ProdutoRepository;
 import com.luca.projetofinal.service.ProdutoService;
 
 @RestController

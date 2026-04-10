@@ -1,60 +1,75 @@
 package com.luca.projetofinal.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.*;
 
 @Entity
 public class Produto {
-	
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long id;
-	public String nome;
-	public String preco;
-	
-	public Produto() {}
-	
-	public Produto(Long id, String nome, String preco) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.preco = preco;
-		
-	}
-	
-	// getters e setters
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	
-	public String getNome() {
-		return nome;
-	}
-	
-	public void setPreco(String preco) {
-		this.preco = preco;
-	}
-	
-	public String getPreco() {
-		return preco;
-	}
-	
-	
-	
-	
-	
-	
-	
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nome;
+
+    private Double preco; 
+
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    public Produto() {}
+
+    public Produto(Long id, String nome, Double preco, Categoria categoria) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.categoria = categoria;
+    }
+
+    // getters e setters
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+    
+    
+    
+    
+    /*{
+		"nome": "Calça",
+		"preco": 19.9,
+		"categoria": {
+			"id": 1
+		}*/
 }
