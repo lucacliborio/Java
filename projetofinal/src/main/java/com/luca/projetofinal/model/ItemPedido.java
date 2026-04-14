@@ -1,5 +1,7 @@
 package com.luca.projetofinal.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +17,7 @@ public class ItemPedido {
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @JsonBackReference
     private Pedido pedido;
 
     @ManyToOne

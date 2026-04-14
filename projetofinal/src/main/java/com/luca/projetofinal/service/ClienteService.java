@@ -35,6 +35,7 @@ public class ClienteService {
 		
 		cliente.setNome(clienteAtualizada.getNome());
 		cliente.setEmail(clienteAtualizada.getEmail());
+		cliente.setSenha(clienteAtualizada.getSenha());
 		cliente.setPedidos(clienteAtualizada.getPedidos());
 		
 		return repository.save(cliente);

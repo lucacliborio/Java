@@ -3,8 +3,11 @@ package com.luca.projetofinal.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +27,8 @@ public class Pedido {
 	 @JoinColumn(name = "cliente_id")
 	 private Cliente cliente;
 
-	 @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	 @JsonManagedReference
 	 private List<ItemPedido> itens;
 	 
 	public Pedido() {}

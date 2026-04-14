@@ -1,7 +1,5 @@
 package com.luca.projetofinal.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -15,7 +13,7 @@ public class Produto {
 
     private Double preco; 
 
-    @JsonManagedReference
+
     @ManyToOne
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;

@@ -2,6 +2,9 @@ package com.luca.projetofinal.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,17 +19,22 @@ public class Cliente {
 
     private String nome;
     private String email;
+    
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String senha;
 
     @OneToMany(mappedBy = "cliente")
+    @JsonIgnore
     private List<Pedido> pedidos;
     
 	public Cliente() {}
 
-	public Cliente(Long id, String nome, String email, List<Pedido> pedidos) {
+	public Cliente(Long id, String nome, String email, List<Pedido> pedidos, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		this.senha = senha;
 		this.pedidos = pedidos;
 	}
 
@@ -55,6 +63,15 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	public List<Pedido> getPedidos() {
 		return pedidos;
@@ -64,4 +81,10 @@ public class Cliente {
 		this.pedidos = pedidos;
 	}
 	
+	
+	 /*{
+	"nome": "",
+	"email": ""
+	"senha": 
+}*/
 }
