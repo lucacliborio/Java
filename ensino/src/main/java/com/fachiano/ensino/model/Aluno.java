@@ -1,18 +1,28 @@
 package com.fachiano.ensino.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 public class Aluno {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long id;
-	public String nome;
-	public String email;
+	private Long id;
+	private String nome;
+	private String email;
+	
+	@ManyToMany
+	@JoinTable(name = "Matriculas", joinColumns = @JoinColumn(name = "aluno_id"), inverseJoinColumns = @JoinColumn(name = "curso_id"))
+	private List<Curso> cursos = new ArrayList<>();
 	
 	public Aluno() {}
 
@@ -52,6 +62,15 @@ public class Aluno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+	
 	
 	
 	

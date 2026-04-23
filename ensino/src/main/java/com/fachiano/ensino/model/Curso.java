@@ -1,10 +1,14 @@
 package com.fachiano.ensino.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -20,6 +24,9 @@ public class Curso {
 	@ManyToOne
 	@JoinColumn(name = "professor_id")
 	private Professor professor;
+	
+	@ManyToMany(mappedBy = "cursos")
+	private List<Aluno> alunos = new ArrayList<>();
 	
 	public Curso() {
 		
@@ -54,6 +61,14 @@ public class Curso {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
+	}
+	
+	
 	
 	
 
