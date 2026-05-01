@@ -2,8 +2,8 @@ package com.fachiano.ensino.service;
 
 import org.springframework.stereotype.Service;
 
-import com.fachiano.ensino.model.Aluno;
-import com.fachiano.ensino.model.Curso;
+import com.fachiano.ensino.model.entity.Aluno;
+import com.fachiano.ensino.model.entity.Curso;
 import com.fachiano.ensino.repository.AlunoRepository;
 import com.fachiano.ensino.repository.CursoRepository;
 

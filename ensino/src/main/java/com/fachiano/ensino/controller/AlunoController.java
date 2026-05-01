@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fachiano.ensino.model.Aluno;
+import com.fachiano.ensino.model.dto.AlunoDTO;
+import com.fachiano.ensino.model.entity.Aluno;
 import com.fachiano.ensino.repository.AlunoRepository;
 import com.fachiano.ensino.service.AlunoService;
 
@@ -30,9 +31,10 @@ public class AlunoController {
 		return service.listarTodos();
 	}
 	
-	@GetMapping ("/{id}")
-	public Aluno buscarPorId(@PathVariable Long id) {
-		return service.buscarPorId(id);
+	@GetMapping("/{id}")
+	public AlunoDTO buscarPorId(@PathVariable Long id) {
+		Aluno aluno = service.buscarPorId(id);
+		return service.converterParaDTO(aluno);
 	}
 	
 	@PostMapping

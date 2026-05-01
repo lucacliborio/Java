@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.fachiano.ensino.model.Aluno;
+import com.fachiano.ensino.model.dto.AlunoDTO;
+import com.fachiano.ensino.model.dto.CursoDTO;
+import com.fachiano.ensino.model.entity.Aluno;
 import com.fachiano.ensino.repository.AlunoRepository;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +43,12 @@ public class AlunoService {
 	
 	public void deletar(Long id) {
 		repository.deleteById(id);
+	}
+	
+	public AlunoDTO converterParaDTO(Aluno aluno) {
+		List<CursoDTO> cursosDTO = aluno.getCursos().stream().map(curso -> new CursoDTO(curso.getId(), curso.getTitulo())).toList();
+		
+		return new AlunoDTO(aluno.getId(), aluno.getNome(), aluno.getEmail(), cursosDTO);
 	}
 
 }

@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fachiano.ensino.model.Curso;
+import com.fachiano.ensino.model.dto.CursoProfessorDTO;
+import com.fachiano.ensino.model.entity.Curso;
 import com.fachiano.ensino.service.CursoService;
 
 @RestController
@@ -25,6 +26,12 @@ public class CursoController {
 	@GetMapping
 	public List<Curso> listarTodos(){
 		return cursoService.listarTodos();
+	}
+	
+	@GetMapping("/{id}")
+	public CursoProfessorDTO listarPorId(@PathVariable Long id) {
+		Curso curso = cursoService.listarPorId(id);
+		return cursoService.converterDTO(curso);
 	}
 	
 	@PostMapping("/{professorID}")
