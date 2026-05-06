@@ -2,7 +2,7 @@ package com.luca.projetofinal.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.luca.projetofinal.model.entity.ItemPedido;
+import com.luca.projetofinal.model.ItemPedido;
 
 public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long>{
 

@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.luca.projetofinal.model.dto.ClienteDTO;
-import com.luca.projetofinal.model.entity.Cliente;
+import com.luca.projetofinal.model.Cliente;
 import com.luca.projetofinal.repository.ClienteRepository;
+
+
 
 @Service
 public class ClienteService {
@@ -42,9 +43,5 @@ public class ClienteService {
 	
 	public void deletar(Long id) {
 		repository.deleteById(id);
-	}
-
-	public ClienteDTO converterParaDTO(Cliente cliente) {
-		return new ClienteDTO(cliente.getId(), cliente.getNome(), cliente.getEmail());
 	}
 }

@@ -2,11 +2,18 @@ package com.luca.projetofinal.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.luca.projetofinal.model.dto.CategoriaDTO;
-import com.luca.projetofinal.model.entity.Categoria;
+import com.luca.projetofinal.model.Categoria;
 import com.luca.projetofinal.service.CategoriaService;
+
 
 @RestController
 @RequestMapping("/categoria")
@@ -14,7 +21,9 @@ public class CategoriController {
 	
 	private final CategoriaService service;
 	
+	
 	public CategoriController(CategoriaService service) {
+		super();
 		this.service = service;
 	}
 
@@ -23,10 +32,9 @@ public class CategoriController {
 		return service.listarAll();
 	}
 	
-	@GetMapping("/{id}")
-	public CategoriaDTO buscarId(@PathVariable Long id) {
-		Categoria categoria = service.buscarId(id);
-		return service.converterParaDTO(categoria);
+	@GetMapping ("/{id}")
+	public Categoria buscarId(@PathVariable Long id) {
+		return service.buscarId(id);
 	}
 	
 	@PostMapping
@@ -41,6 +49,6 @@ public class CategoriController {
 	
 	@DeleteMapping("/{id}")
 	public void deletar(@PathVariable Long id) {
-		service.deletar(id);
+		 service.deletar(id);
 	}
 }

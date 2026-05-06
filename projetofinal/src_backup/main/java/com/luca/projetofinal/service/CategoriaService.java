@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.luca.projetofinal.model.dto.CategoriaDTO;
-import com.luca.projetofinal.model.entity.Categoria;
+import com.luca.projetofinal.model.Categoria;
 import com.luca.projetofinal.repository.CategoriaRepository;
 
 @Service
@@ -41,9 +40,5 @@ public class CategoriaService {
 	
 	public void deletar(Long id) {
 		repository.deleteById(id);
-	}
-
-	public CategoriaDTO converterParaDTO(Categoria categoria) {
-		return new CategoriaDTO(categoria.getId(), categoria.getNome(), categoria.getDescricao());
 	}
 }

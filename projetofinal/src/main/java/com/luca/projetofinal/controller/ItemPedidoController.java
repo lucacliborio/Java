@@ -2,16 +2,10 @@ package com.luca.projetofinal.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.luca.projetofinal.model.ItemPedido;
+import com.luca.projetofinal.model.dto.ItemPedidoDTO;
+import com.luca.projetofinal.model.entity.ItemPedido;
 import com.luca.projetofinal.service.ItemPedidoService;
 
 @RestController
@@ -21,7 +15,6 @@ public class ItemPedidoController {
 	private final ItemPedidoService service;
 	
 	public ItemPedidoController(ItemPedidoService service) {
-		super();
 		this.service = service;
 	}
 
@@ -30,23 +23,19 @@ public class ItemPedidoController {
 		return service.listarAll();
 	}
 	
-	@GetMapping ("/{id}")
-	public ItemPedido buscarId(@PathVariable Long id) {
-		return service.buscarId(id);
+	@GetMapping("/{id}")
+	public ItemPedidoDTO buscarId(@PathVariable Long id) {
+		ItemPedido item = service.buscarId(id);
+		return service.converterParaDTO(item);
 	}
 	
 	@PostMapping
-	public ItemPedido salvar(@RequestBody ItemPedido itempedido) {
-		return service.salvar(itempedido);
-	}
-	
-	@PutMapping("/{id}")
-	public ItemPedido atualizar(@PathVariable Long id, @RequestBody ItemPedido itempedido) {
-		return service.atualizar(id, itempedido);
+	public ItemPedido salvar(@RequestBody ItemPedido itemPedido) {
+		return service.salvar(itemPedido);
 	}
 	
 	@DeleteMapping("/{id}")
 	public void deletar(@PathVariable Long id) {
-		 service.deletar(id);
+		service.deletar(id);
 	}
 }
