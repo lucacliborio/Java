@@ -16,6 +16,8 @@ import com.fachiano.ensino.model.entity.Aluno;
 import com.fachiano.ensino.repository.AlunoRepository;
 import com.fachiano.ensino.service.AlunoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/aluno")
 public class AlunoController {
@@ -38,7 +40,7 @@ public class AlunoController {
 	}
 	
 	@PostMapping
-	public Aluno salvar(@RequestBody Aluno aluno) {
+	public Aluno salvar(@RequestBody @Valid Aluno aluno) {
 		return service.salvar(aluno);
 	}
 	

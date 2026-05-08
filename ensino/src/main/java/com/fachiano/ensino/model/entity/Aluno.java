@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.persistence.JoinColumn;
 
 @Entity
@@ -17,7 +19,11 @@ public class Aluno {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank(message = "Nome é obrigatorio")
 	private String nome;
+	@NotBlank(message = "Email é obrigatorio")
+	@Email(message = "Email Com formato inválido")
 	private String email;
 	
 	@ManyToMany
