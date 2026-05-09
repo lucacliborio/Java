@@ -3,7 +3,6 @@ package com.luca.projetofinal.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 
 import com.luca.projetofinal.model.dto.ProdutoDTO;
 import com.luca.projetofinal.model.entity.Produto;
@@ -31,12 +30,12 @@ public class ProdutoController {
 	}
 	
 	@PostMapping
-	public Produto salvar(@RequestBody @Valid Produto produto) {
+	public Produto salvar(@RequestBody Produto produto) {
 		return service.salvar(produto);
 	}
 	
 	@PutMapping("/{id}")
-	public Produto atualizar(@PathVariable Long id, @RequestBody @Valid Produto produto) {
+	public Produto atualizar(@PathVariable Long id, @RequestBody Produto produto) {
 		return service.atualizar(id, produto);
 	}
 	

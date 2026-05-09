@@ -3,7 +3,6 @@ package com.luca.projetofinal.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 
 import com.luca.projetofinal.model.dto.CategoriaDTO;
 import com.luca.projetofinal.model.entity.Categoria;
@@ -31,12 +30,12 @@ public class CategoriController {
 	}
 	
 	@PostMapping
-	public Categoria salvar(@RequestBody @Valid Categoria categoria) {
+	public Categoria salvar(@RequestBody Categoria categoria) {
 		return service.salvar(categoria);
 	}
 	
 	@PutMapping("/{id}")
-	public Categoria atualizar(@PathVariable Long id, @RequestBody @Valid Categoria categoria) {
+	public Categoria atualizar(@PathVariable Long id, @RequestBody Categoria categoria) {
 		return service.atualizar(id, categoria);
 	}
 	

@@ -3,7 +3,6 @@ package com.luca.projetofinal.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.*;
-import jakarta.validation.Valid;
 
 import com.luca.projetofinal.model.dto.ItemPedidoDTO;
 import com.luca.projetofinal.model.entity.ItemPedido;
