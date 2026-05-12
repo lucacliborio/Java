@@ -57,7 +57,7 @@ public class Pedido {
 	  "itens": [
 	    {
 	      "produto": { "id": 1 },
-	      "quantidade": 2,
+	      "quantidade": 1,
 	      "precoUnitario": 89.90
 	    }
 	  ]
